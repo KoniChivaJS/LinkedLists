@@ -24,8 +24,47 @@ public:
 
     void at(int index);
 
+    void atInsert(int index,T data);
+    void atRemove(int index);
+
     void show() const;
 };
+
+template<typename T>
+void SingleLinkedList<T>::atRemove(int index) {
+    if(index < 0 || index >= size){
+        throw out_of_range("Index out of range");
+    }
+    Node<T> *current = head.get();
+    for(int i = 0; i < index; i++){
+        current = current->next.get();
+    }
+    current->next = move(current->next->next);
+    --size;
+}
+
+template<typename T>
+void SingleLinkedList<T>::atInsert(int index,T data) {
+    if(index < 0 || index >= size){
+        throw out_of_range("Index out of range");
+    }
+    Node<T> *current = head.get();
+    unique_ptr<Node<T>> newNode = make_unique<Node<T>>(data);
+    if(index == 0){
+        unshift(data);
+        return;
+    }else if(index == size - 1){
+        push(data);
+        return;
+    }
+    for(int i = 0; i < index; i++){
+        current = current->next.get();
+    }
+    newNode->next = move(current->next);
+    current->next = move(newNode);
+    size++;
+
+}
 
 template<typename T>
 void SingleLinkedList<T>::at(int index) {

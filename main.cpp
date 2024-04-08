@@ -7,6 +7,9 @@ int main() {
     list.push(2);
     list.push(3);
     list.push(4);
-    list.at(2);
+    list.atInsert(0,0);
+    list.show();
+    list.atRemove(1);
+    list.show();
     return 0;
 }
