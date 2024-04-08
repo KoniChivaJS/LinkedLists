@@ -3,16 +3,10 @@
 using namespace std;
 int main() {
     SingleLinkedList<int> list;
-    list.push(12);
-    list.show();
-    list.unshift(1);
-    list.show();
-    list.push(22);
-    list.show();
-    list.shift();
-    list.show();
-    list.pop();
-    list.show();
-
+    list.push(1);
+    list.push(2);
+    list.push(3);
+    list.push(4);
+    list.at(2);
     return 0;
 }

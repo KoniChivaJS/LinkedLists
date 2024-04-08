@@ -22,8 +22,23 @@ public:
     void shift();
     void pop();
 
+    void at(int index);
+
     void show() const;
 };
+
+template<typename T>
+void SingleLinkedList<T>::at(int index) {
+    Node<T> *current = head.get();
+    if(index < 0 || index >= size){
+        throw out_of_range("Index out of range");
+    }
+
+    for(int i = 0; i < index; i++){
+        current = current->next.get();
+    }
+    cout<<"Data at index "<<index<<" : "<<current->data<<endl;
+}
 
 template<typename T>
 void SingleLinkedList<T>::pop() {
