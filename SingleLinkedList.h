@@ -18,7 +18,19 @@ public:
     SingleLinkedList() :head{nullptr}, size{0} {};
     void unshift(T data);
     void push(T data);
+
+    void show() const;
 };
+
+template<typename T>
+void SingleLinkedList<T>::show() const {
+    Node<T> *current = head.get();
+    while (current != nullptr){
+        cout<<current->data<<" ";
+        current = current->next.get();
+    }
+    cout<<endl;
+}
 
 template<typename T>
 void SingleLinkedList<T>::unshift(T data) {
@@ -27,7 +39,6 @@ void SingleLinkedList<T>::unshift(T data) {
     head = move(newNode);
     size++;
 }
-
 
 template<typename T>
 void SingleLinkedList<T>::push(T data) {
