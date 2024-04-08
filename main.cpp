@@ -11,5 +11,7 @@ int main() {
     list.show();
     list.atRemove(1);
     list.show();
+    cout<<"Found: "<<list.search(1)<<endl;
+
     return 0;
 }

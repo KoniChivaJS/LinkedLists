@@ -16,19 +16,44 @@ private:
     int size;
 public:
     SingleLinkedList() :head{nullptr}, size{0} {};
+
     void unshift(T data);
     void push(T data);
-
     void shift();
     void pop();
 
     void at(int index);
-
     void atInsert(int index,T data);
     void atRemove(int index);
 
+    int search(T value);
+
+    bool isEmpty();
+
     void show() const;
 };
+
+template<typename T>
+int SingleLinkedList<T>::search(T value) {
+    Node<T> *current = head.get();
+    int index = 0;
+    while (current){
+        if(current->data == value) {
+            return index;
+        }
+        current = current->next.get();
+        index++;
+    }
+    return -1;
+}
+
+template<typename T>
+bool SingleLinkedList<T>::isEmpty() {
+    if(!head){
+        return true;
+    }
+    return false;
+}
 
 template<typename T>
 void SingleLinkedList<T>::atRemove(int index) {
