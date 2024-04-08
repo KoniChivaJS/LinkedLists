@@ -12,8 +12,8 @@ namespace single_Node{
     struct Node {
         T data;
         unique_ptr<Node> pNext;
-        Node(T newData)
-            :data{newData}, pNext{nullptr}{};
+        explicit Node(T newData = T(),Node next = nullptr)
+            :data{newData}, pNext{next}{};
     };
 }
 
