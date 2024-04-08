@@ -9,6 +9,10 @@ int main() {
     list.show();
     list.push(22);
     list.show();
+    list.shift();
+    list.show();
+    list.pop();
+    list.show();
 
     return 0;
 }

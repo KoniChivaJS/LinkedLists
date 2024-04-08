@@ -19,8 +19,38 @@ public:
     void unshift(T data);
     void push(T data);
 
+    void shift();
+    void pop();
+
     void show() const;
 };
+
+template<typename T>
+void SingleLinkedList<T>::pop() {
+    if(!head){
+        throw out_of_range("List empty");
+    }
+    if(size == 1){
+        head.reset();
+        size--;
+        return;
+    }
+    Node<T> *current = head.get();
+    while(current->next->next){
+        current = current->next.get();
+    }
+    current->next.reset();
+    size--;
+}
+
+template<typename T>
+void SingleLinkedList<T>::shift() {
+    if(!head){
+        throw out_of_range("List empty");
+    }
+    head = move(head->next);
+    size--;
+}
 
 template<typename T>
 void SingleLinkedList<T>::show() const {
